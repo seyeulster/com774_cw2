@@ -61,7 +61,7 @@ def trainModel(dataFile, modelSavePath, modelType='LR'):
 
 if __name__ == "__main__":
 	argparser = argparse.ArgumentParser()
-	argparser.add_argument('--data', required=True, help='Data file to load')
+	argparser.add_argument('--trainingdata', required=True, help='Data file to load')
 	argparser.add_argument('--model', default=False, help='Model file to save')
 	args = argparser.parse_args()
 	#Let's use autologging because it's awsome.
