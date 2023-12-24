@@ -30,7 +30,7 @@ def splitData(X, Y, percentage=0.3):
 
 def buildModelLR(X, Y):
 	#Create a model and fit it to the data
-	mdl = LogisticRegression(C=1/0.1, solver="liblinear", random_state=32)
+	mdl = LogisticRegression(C=1/0.1, solver="liblinear", random_state=42)
 	mdl.fit(X, Y)
 	return mdl
 def buildModelSVM(X, Y):
