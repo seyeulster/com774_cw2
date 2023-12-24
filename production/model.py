@@ -66,4 +66,4 @@ if __name__ == "__main__":
 	args = argparser.parse_args()
 	#Let's use autologging because it's awsome.
 	mlflow.autolog()
-	trainModel(args.data, args.model)
+	trainModel(args.trainingdata, args.model)
