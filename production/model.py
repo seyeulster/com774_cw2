@@ -9,6 +9,8 @@ from sklearn.model_selection import train_test_split
 from sklearn.metrics import roc_auc_score
 from sklearn.metrics import roc_curve
 
+random_state_val = 42
+
 # Load data from a CSV using pandas and return it.
 # expected format is two columns.
 def loadData(file):
@@ -26,15 +28,15 @@ def loadData(file):
 # Split the data into train and test sets
 def splitData(X, Y, percentage=0.3):
 	#Pretty straightforward, use the scikit-learn function
-	return train_test_split(X, Y, test_size=percentage)
+	return train_test_split(X, Y, test_size=percentage, random_state=random_state_val)
 
 def buildModelLR(X, Y):
 	#Create a model and fit it to the data
-	mdl = LogisticRegression(C=1/0.1, solver="liblinear", random_state=42)
+	mdl = LogisticRegression(C=1/0.1, solver="liblinear", random_state=random_state_val)
 	mdl.fit(X, Y)
 	return mdl
 def buildModelSVM(X, Y):
-	mdl = SVC()
+	mdl = SVC(random_state=random_state_val)
 	mdl.fit(X, Y)
 	return mdl
 
@@ -44,15 +46,17 @@ def assessModel(model, X, Y):
 	acc = np.average(testPredictions == Y)
 	return acc
 
-def trainModel(dataFile, modelSavePath, modelType='LR'): 
+def trainModel(dataFile, modelSavePath, modelType='SVM'): 
 	X, Y = loadData(dataFile)
 	X_train, X_test, Y_train, Y_test = splitData(X, Y, 0.2)
 	print("Train length", len(X_train))
 	print("Test length", len(X_test))
 	if modelType == "LR":
 		model = buildModelLR(X_train, Y_train)
+	else:
+		model = buildModelSVM(X_train, Y_train)
 
-	acc = assessModel(model, X_train, Y_train)
+	acc = assessModel(model, X_test, Y_test)
 	print("Accuracy", acc)
 	if modelSavePath:
 		print("Saving model to", modelSavePath)

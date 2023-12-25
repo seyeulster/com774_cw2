@@ -1,0 +1,23 @@
+digest: 7d7ae629
+name: dataset
+profile: '{"num_rows": 143476, "num_elements": 5165136}'
+schema: '{"mlflow_colspec": [{"type": "long", "name": "Nose_x0"}, {"type": "long",
+  "name": "Nose_y0"}, {"type": "long", "name": "Neck_x1"}, {"type": "long", "name":
+  "Neck_y1"}, {"type": "long", "name": "RShoulder_x2"}, {"type": "long", "name": "RShoulder_y2"},
+  {"type": "long", "name": "Relbow_x3"}, {"type": "long", "name": "RElbow_y3"}, {"type":
+  "long", "name": "RWrist_x4"}, {"type": "long", "name": "RWrist_y4"}, {"type": "long",
+  "name": "LShoulder_x5"}, {"type": "long", "name": "LShoulder_y5"}, {"type": "long",
+  "name": "LElbow_x6"}, {"type": "long", "name": "LElbow_y6"}, {"type": "long", "name":
+  "LWrist_x7"}, {"type": "long", "name": "LWrist_y7"}, {"type": "long", "name": "RHip_x8"},
+  {"type": "long", "name": "RHip_y8"}, {"type": "long", "name": "RKnee_x9"}, {"type":
+  "long", "name": "RKnee_y9"}, {"type": "long", "name": "RAnkle_x10"}, {"type": "long",
+  "name": "RAnkle_y10"}, {"type": "long", "name": "LHip_x11"}, {"type": "long", "name":
+  "LHip_y11"}, {"type": "long", "name": "LKnee_x12"}, {"type": "long", "name": "LKnee_y12"},
+  {"type": "long", "name": "LAnkle_x13"}, {"type": "long", "name": "LAnkle_y13"},
+  {"type": "long", "name": "REye_x14"}, {"type": "long", "name": "REye_y14"}, {"type":
+  "long", "name": "LEye_x15"}, {"type": "long", "name": "LEye_y15"}, {"type": "long",
+  "name": "REar_x16"}, {"type": "long", "name": "REar_y16"}, {"type": "long", "name":
+  "LEar_x17"}, {"type": "long", "name": "LEar_y17"}]}'
+source: '{"tags": {"mlflow.user": "HP", "mlflow.source.name": "production/model.py",
+  "mlflow.source.type": "LOCAL", "mlflow.source.git.commit": "1a853cfc9540f2f8abe2767362a03f97379fcb97"}}'
+source_type: code

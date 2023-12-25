@@ -1,0 +1,41 @@
+artifact_path: model
+flavors:
+  python_function:
+    env:
+      conda: conda.yaml
+      virtualenv: python_env.yaml
+    loader_module: mlflow.sklearn
+    model_path: model.pkl
+    predict_fn: predict
+    python_version: 3.10.4
+  sklearn:
+    code: null
+    pickled_model: model.pkl
+    serialization_format: cloudpickle
+    sklearn_version: 1.3.2
+mlflow_version: 2.9.1
+model_size_bytes: 2723
+model_uuid: 3f918c61540d46419698bc6064c3a9c4
+run_id: 65aafac1c0354aaebab13bc2abff9b15
+signature:
+  inputs: '[{"type": "long", "name": "Nose_x0"}, {"type": "long", "name": "Nose_y0"},
+    {"type": "long", "name": "Neck_x1"}, {"type": "long", "name": "Neck_y1"}, {"type":
+    "long", "name": "RShoulder_x2"}, {"type": "long", "name": "RShoulder_y2"}, {"type":
+    "long", "name": "Relbow_x3"}, {"type": "long", "name": "RElbow_y3"}, {"type":
+    "long", "name": "RWrist_x4"}, {"type": "long", "name": "RWrist_y4"}, {"type":
+    "long", "name": "LShoulder_x5"}, {"type": "long", "name": "LShoulder_y5"}, {"type":
+    "long", "name": "LElbow_x6"}, {"type": "long", "name": "LElbow_y6"}, {"type":
+    "long", "name": "LWrist_x7"}, {"type": "long", "name": "LWrist_y7"}, {"type":
+    "long", "name": "RHip_x8"}, {"type": "long", "name": "RHip_y8"}, {"type": "long",
+    "name": "RKnee_x9"}, {"type": "long", "name": "RKnee_y9"}, {"type": "long", "name":
+    "RAnkle_x10"}, {"type": "long", "name": "RAnkle_y10"}, {"type": "long", "name":
+    "LHip_x11"}, {"type": "long", "name": "LHip_y11"}, {"type": "long", "name": "LKnee_x12"},
+    {"type": "long", "name": "LKnee_y12"}, {"type": "long", "name": "LAnkle_x13"},
+    {"type": "long", "name": "LAnkle_y13"}, {"type": "long", "name": "REye_x14"},
+    {"type": "long", "name": "REye_y14"}, {"type": "long", "name": "LEye_x15"}, {"type":
+    "long", "name": "LEye_y15"}, {"type": "long", "name": "REar_x16"}, {"type": "long",
+    "name": "REar_y16"}, {"type": "long", "name": "LEar_x17"}, {"type": "long", "name":
+    "LEar_y17"}]'
+  outputs: '[{"type": "tensor", "tensor-spec": {"dtype": "object", "shape": [-1]}}]'
+  params: null
+utc_time_created: '2023-12-24 22:10:28.661142'
