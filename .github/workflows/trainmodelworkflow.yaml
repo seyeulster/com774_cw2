@@ -1,5 +1,5 @@
 name: GitHub Actions Test
-run-name: ${{ github.actor }} train ML Model
+run-name: ${{ github.actor }} train ml model
 on:
   push:
     branches:
