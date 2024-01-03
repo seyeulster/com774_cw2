@@ -1,0 +1,19 @@
+name: GitHub Actions Test
+run-name: ${{ github.actor }} train ml model
+on: [push]
+jobs:
+  testJob:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "initiating ML model training on Azure"
+      - run: echo "Checking out the repository from ${{ github.repository }}."
+      - name: Clone repository code
+        uses: actions/checkout@v4
+      - run: echo "Repository cloned, I think I'm ready. The files look like this:"
+      - name: List files
+        run: | 
+          ls ${{ github.workspace }}
+      - name: Test with pytest
+        run: |
+          pip install pytest pytest-cov
+          pytest test_train.py --doctest-modules --junitxml=junit/test-results.xml --cov=com --cov-report=xml --cov-report=html
