@@ -1,4 +1,5 @@
 import unittest
+import pytest
 import pandas as pd
 from model import loadData, splitData, buildModelLR, assessModel
 from sklearn.linear_model import LogisticRegression
