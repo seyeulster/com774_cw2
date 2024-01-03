@@ -48,7 +48,7 @@ class TestTrain(unittest.TestCase):
         acc = assessModel(model, self.testX, self.testY)
         #TODO: finish these
         # self.<FIXME>(acc, 0)
-        self.assertGreaterEqual(acc, 0)
+        self.assertGreaterEqual(acc, 5)
         # self.<FIXME>(acc, 1)
         self.assertLessEqual(acc, 1)
 
