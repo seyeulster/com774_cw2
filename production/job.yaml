@@ -4,7 +4,7 @@ command: python model.py --trainingdata ${{ inputs.training_data }}
 inputs:
   training_data:
     type: uri_file
-    path: azureml:action_new:1
+    path: azureml:action_new:2
 environment: azureml://registries/azureml/environments/sklearn-1.1/versions/14
 compute: com774-cw2-compute
 experiment_name: cw2
