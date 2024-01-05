@@ -8,19 +8,19 @@ from sklearn.svm import SVC
 class TestTrain(unittest.TestCase):
 
     def setUp(self):
-        test_df = pd.read_csv("./production/testDataset.csv")
-        self.testX = test_df.drop(['action'], axis=1)
-        self.testY = test_df['action']
+        test_df = pd.read_csv("testDatasetNew.csv", sep=',')
+        self.testX = test_df.drop(['class'], axis=1)
+        self.testY = test_df['class']
 
     def test_loadData(self):
         #We know it should have 150 rows, so let's check that
         #We also know that the X and Y should be the same length
-        X, Y = loadData('./production/actionDataset.csv')
-        self.assertGreaterEqual(len(X), 179346)
+        X, Y = loadData('actionDatasetNew.csv')
+        self.assertGreaterEqual(len(X), 5418)
         self.assertEqual(len(Y), len(X))
         #We also know X should have two columns, so lets check that
         #   for the first entry
-        self.assertEqual(len(X.iloc[0, :]), 36)
+        self.assertEqual(len(X.iloc[0, :]), 43)
 
     def test_splitData(self):
         #Test that we can split the data into train and test sets
@@ -48,7 +48,7 @@ class TestTrain(unittest.TestCase):
         acc = assessModel(model, self.testX, self.testY)
         #TODO: finish these
         # self.<FIXME>(acc, 0)
-        self.assertGreaterEqual(acc, 5)
+        self.assertGreaterEqual(acc, 0)
         # self.<FIXME>(acc, 1)
         self.assertLessEqual(acc, 1)
 

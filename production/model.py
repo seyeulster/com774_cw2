@@ -15,13 +15,13 @@ random_state_val = 42
 # expected format is two columns.
 def loadData(file):
     # Load the CSV file
-    df = pd.read_csv(file, sep=";")
+    df = pd.read_csv(file, sep=",")
 	# drop from df missing/NaN values using dropna() function 
     df = df.dropna()
     # Pick out the columns we want to use as inputs
-    X = df.drop(['id', 'action', 'video_src'], axis=1)
+    X = df.drop(['UNIQUE_ID', 'user', 'class'], axis=1)
     # Pick out the column we want to use as the output
-    Y = df['action']
+    Y = df['class']
     # Return the input and output
     return X, Y
 
@@ -30,11 +30,20 @@ def splitData(X, Y, percentage=0.3):
 	#Pretty straightforward, use the scikit-learn function
 	return train_test_split(X, Y, test_size=percentage, random_state=random_state_val)
 
+def scaleData(X_train, X_test):
+	from sklearn.preprocessing import StandardScaler
+	scaler = StandardScaler()
+	scaler.fit(X_train)
+	X_train_scaled = pd.DataFrame(scaler.transform(X_train))
+	X_test_scaled = pd.DataFrame(scaler.transform(X_test))
+	return X_train_scaled, X_test_scaled
+
 def buildModelLR(X, Y):
 	#Create a model and fit it to the data
 	mdl = LogisticRegression(C=1/0.1, solver="liblinear", random_state=random_state_val)
 	mdl.fit(X, Y)
 	return mdl
+
 def buildModelSVM(X, Y):
 	mdl = SVC(random_state=random_state_val)
 	mdl.fit(X, Y)
@@ -46,9 +55,11 @@ def assessModel(model, X, Y):
 	acc = np.average(testPredictions == Y)
 	return acc
 
-def trainModel(dataFile, modelSavePath, modelType='SVM'): 
+def trainModel(dataFile, modelSavePath, modelType='SVM', scale_data=True): 
 	X, Y = loadData(dataFile)
 	X_train, X_test, Y_train, Y_test = splitData(X, Y, 0.2)
+	if scale_data:
+		X_train, X_test = scaleData(X_train, X_test)
 	print("Train length", len(X_train))
 	print("Test length", len(X_test))
 	if modelType == "LR":
@@ -68,6 +79,6 @@ if __name__ == "__main__":
 	argparser.add_argument('--trainingdata', required=True, help='Data file to load')
 	argparser.add_argument('--model', default=False, help='Model file to save')
 	args = argparser.parse_args()
-	#Let's use autologging because it's awsome.
+	#Using mlflow autologging to log training experiment results.
 	mlflow.autolog()
 	trainModel(args.trainingdata, args.model)
