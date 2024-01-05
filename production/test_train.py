@@ -8,14 +8,14 @@ from sklearn.svm import SVC
 class TestTrain(unittest.TestCase):
 
     def setUp(self):
-        test_df = pd.read_csv("testDatasetNew.csv", sep=',')
+        test_df = pd.read_csv("./production/testDatasetNew.csv", sep=',')
         self.testX = test_df.drop(['class'], axis=1)
         self.testY = test_df['class']
 
     def test_loadData(self):
         #We know it should have 150 rows, so let's check that
         #We also know that the X and Y should be the same length
-        X, Y = loadData('actionDatasetNew.csv')
+        X, Y = loadData('./production/actionDatasetNew.csv')
         self.assertGreaterEqual(len(X), 5418)
         self.assertEqual(len(Y), len(X))
         #We also know X should have two columns, so lets check that
