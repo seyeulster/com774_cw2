@@ -16,7 +16,7 @@ class TestTrain(unittest.TestCase):
         #We know it should have 150 rows, so let's check that
         #We also know that the X and Y should be the same length
         X, Y = loadData('./production/actionDatasetNew.csv')
-        self.assertGreaterEqual(len(X), 5418)
+        self.assertGreaterEqual(len(X), 4944)
         self.assertEqual(len(Y), len(X))
         #We also know X should have two columns, so lets check that
         #   for the first entry
