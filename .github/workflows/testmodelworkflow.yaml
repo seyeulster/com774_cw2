@@ -1,6 +1,10 @@
 name: GitHub Actions Test
 run-name: ${{ github.actor }} testing ML training code
-on: [push]
+on: 
+  push:
+    branches-ignore:
+        - "staging"
+  workflow_call:
 jobs:
   testJob:
     runs-on: ubuntu-latest
@@ -25,4 +29,4 @@ jobs:
       - name: Test with pytest
         run: |
           pip install pytest
-          pytest ./production/test_train.py
+          pytest ./production/test_train.py ./production/test_train_integration.py

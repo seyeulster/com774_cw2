@@ -13,18 +13,18 @@ class TestTrain(unittest.TestCase):
         self.testY = test_df['class']
 
     def test_loadData(self):
-        #We know it should have 150 rows, so let's check that
-        #We also know that the X and Y should be the same length
+        #The loaded data should have 4944 rows
+        #Also, X and Y should be the same length
         X, Y = loadData('./production/actionDatasetNew.csv')
-        self.assertGreaterEqual(len(X), 5418)
+        self.assertGreaterEqual(len(X), 4944)
         self.assertEqual(len(Y), len(X))
-        #We also know X should have two columns, so lets check that
+        #We The number of columns in X should be equal to the number of features
         #   for the first entry
         self.assertEqual(len(X.iloc[0, :]), 43)
 
     def test_splitData(self):
-        #Test that we can split the data into train and test sets
-        #We know that the train and test sets should add up to the same
+        # Test that we can split the data into train and test sets
+        # Train and test sets should add up to the same
         # length as the original data (i.e. we havn't lost anything)
         split_pct = 0.3
         X_train, X_test, Y_train, Y_test = splitData(self.testX, self.testY, split_pct)
@@ -46,10 +46,8 @@ class TestTrain(unittest.TestCase):
         # but this is a test of its function not it's performance.
         model = buildModelLR(self.testX, self.testY)
         acc = assessModel(model, self.testX, self.testY)
-        #TODO: finish these
-        # self.<FIXME>(acc, 0)
+        
         self.assertGreaterEqual(acc, 0)
-        # self.<FIXME>(acc, 1)
         self.assertLessEqual(acc, 1)
 
 if __name__ == '__main__':

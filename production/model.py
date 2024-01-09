@@ -55,7 +55,7 @@ def assessModel(model, X, Y):
 	acc = np.average(testPredictions == Y)
 	return acc
 
-def trainModel(dataFile, modelSavePath, modelType='SVM', scale_data=True): 
+def trainModel(dataFile, modelSavePath, modelType='LR', scale_data=False): 
 	X, Y = loadData(dataFile)
 	X_train, X_test, Y_train, Y_test = splitData(X, Y, 0.2)
 	if scale_data:

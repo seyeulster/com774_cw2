@@ -5,7 +5,11 @@ on:
     branches:
         - staging
 jobs:
-  testJob:
+  testModel:
+    uses: ./.github/workflows/testmodelworkflow.yml
+  trainModel:
+    name: deployModel
+    needs: [testModel]
     runs-on: ubuntu-latest
     steps:
       - run: echo "initiating ML model training on Azure"
