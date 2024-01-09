@@ -1,6 +1,10 @@
 name: GitHub Actions Test
 run-name: ${{ github.actor }} testing ML training code
-on: [push]
+on: 
+  push:
+    branches-ignore:
+        - "staging"
+  workflow_call:
 jobs:
   testJob:
     runs-on: ubuntu-latest
