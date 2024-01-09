@@ -6,7 +6,7 @@ on:
         - staging
 jobs:
   testModel:
-    uses: ./.github/workflows/testmodelworkflow.yml
+    uses: ./.github/workflows/testmodelworkflow.yaml
   trainModel:
     name: deployModel
     needs: [testModel]
